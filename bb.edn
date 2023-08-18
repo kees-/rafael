@@ -1,0 +1,10 @@
+{:paths ["."]
+ :deps {ffclj/ffclj {:mvn/version "0.1.2"}
+        io.github.lispyclouds/bblgum {:git/url "https://github.com/lispyclouds/bblgum"
+                                      :git/sha "5b26ffae51857e43933714091f14b39bfe12bd6d"}}
+ :tasks {hydrate {:task scripts.project/hydrate}
+         press-file {:task (exec 'scripts.project/press-to-file)
+                     :exec-args {:video-dir "contents"
+                                 :masks-dir "masks"
+                                 :panes-dir "panes"
+                                 :pressfile "press"}}}}
