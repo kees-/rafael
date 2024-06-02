@@ -1,0 +1,12 @@
+[[1 :overlay {}]
+ [3 :format ]]
+
+;; Filterchain is a pipe of individual filters
+;; Comma separated
+
+;; Filtergraph is a sequence of i/o-routed filterchains
+;; Semicolon separated
+;; Syntax, one node of a graph is:
+;; bracketed sources prepending filterchain
+;; bracketed output targets appending filterchain
+;; final filterchain can lack named output and spits out of the filter generally
