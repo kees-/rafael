@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Load as grayscale
-image = cv2.imread('tougher.bmp', cv2.IMREAD_GRAYSCALE)
+image = cv2.imread('church.bmp', cv2.IMREAD_GRAYSCALE)
 
 # Threshold to get a binary image
 _, binary_image = cv2.threshold(image, 128, 255, cv2.THRESH_BINARY_INV)
@@ -24,6 +24,11 @@ for i, contour in enumerate(contours):
 # Visualize contours with unique colors
 combined_mask = np.zeros_like(binary_image)
 for i, mask in enumerate(masks):
-  combined_mask[mask > 0] = 128  # Assign a grayscale value
+  combined_mask[mask > 0] = 255  # Assign a grayscale value
 
-cv2.imwrite('target/combined.png', combined_mask)
+a = cv2.cvtColor(combined_mask,cv2.COLOR_GRAY2BGR)
+alpha = np.sum(a, axis=-1) > 0
+alpha = np.uint8(alpha * 255)
+res = np.dstack((a, alpha))
+
+cv2.imwrite('target/combined.png', res)
