@@ -8,5 +8,8 @@
 /press
 /target
 
+/__pycache__/
+
+*.bmp
 *.mp4
 *.mov
